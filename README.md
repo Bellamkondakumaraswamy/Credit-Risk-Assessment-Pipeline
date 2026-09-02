@@ -1,1 +1,1 @@
-# Credit Risk Assessment Pipelin
+# Credit Risk Assessment Pipeline
