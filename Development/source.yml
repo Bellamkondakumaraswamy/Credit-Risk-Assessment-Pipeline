@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: bronze
+    catalog: credit_analysis_catalog
+    schema: bronze
+
+    tables:
+      - name: applicant_profiles
+      - name: credit_application
+      - name: credit_history
+      - name: economic_indicators
+      - name: loan_details
+       
