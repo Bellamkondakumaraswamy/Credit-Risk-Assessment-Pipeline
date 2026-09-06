@@ -49,9 +49,9 @@ SHOW TABLES IN credit_analysis_catalog.bronze;
 -- MAGIC     )
 -- MAGIC
 -- MAGIC     if response.status_code == 200:
--- MAGIC         print("✅ Slack alert sent")
+-- MAGIC         print("Slack alert sent")
 -- MAGIC     else:
--- MAGIC         print("❌ Slack alert failed")
+-- MAGIC         print(" Slack alert failed")
 -- MAGIC         print(response.text)
 
 -- COMMAND ----------
@@ -105,7 +105,7 @@ SHOW TABLES IN credit_analysis_catalog.bronze;
 -- MAGIC if empty_tables:
 -- MAGIC
 -- MAGIC     test_message = """
--- MAGIC 🚨 CREDIT ANALYSIS — BRONZE ALERT TEST
+-- MAGIC  CREDIT ANALYSIS — BRONZE ALERT TEST
 -- MAGIC
 -- MAGIC This is a test message from the Bronze Alerts notebook.
 -- MAGIC
@@ -116,7 +116,7 @@ SHOW TABLES IN credit_analysis_catalog.bronze;
 -- MAGIC
 -- MAGIC else:
 -- MAGIC
--- MAGIC     print("✅ Bronze Alert Check Passed")
+-- MAGIC     print(" Bronze Alert Check Passed")
 -- MAGIC     print("All Bronze tables contain data.")
 
 -- COMMAND ----------
@@ -127,7 +127,7 @@ SHOW TABLES IN credit_analysis_catalog.bronze;
 -- MAGIC test_url = webhook_url
 -- MAGIC
 -- MAGIC payload = {
--- MAGIC     "text": "🚨 TEST - Credit Analysis Databricks Alert"
+-- MAGIC     "text": " TEST - Credit Analysis Databricks Alert"
 -- MAGIC }
 -- MAGIC
 -- MAGIC response = requests.post(
@@ -153,13 +153,13 @@ SHOW TABLES IN credit_analysis_catalog.bronze;
 -- MAGIC if empty_tables:
 -- MAGIC
 -- MAGIC     message = f"""
--- MAGIC 🚨 CREDIT ANALYSIS — BRONZE ALERT
+-- MAGIC  CREDIT ANALYSIS — BRONZE ALERT
 -- MAGIC
 -- MAGIC Empty Bronze tables detected:
 -- MAGIC
 -- MAGIC {chr(10).join("• " + table for table in empty_tables)}
 -- MAGIC
--- MAGIC ⚠️ Data ingestion may have failed.
+-- MAGIC  Data ingestion may have failed.
 -- MAGIC Please check the Bronze pipeline.
 -- MAGIC """
 -- MAGIC
@@ -167,7 +167,7 @@ SHOW TABLES IN credit_analysis_catalog.bronze;
 -- MAGIC
 -- MAGIC else:
 -- MAGIC
--- MAGIC     print("✅ BRONZE CHECK PASSED")
+-- MAGIC     print("BRONZE CHECK PASSED")
 -- MAGIC     print("All Bronze tables contain data.")
 
 -- COMMAND ----------
@@ -188,12 +188,12 @@ SHOW TABLES IN credit_analysis_catalog.bronze;
 -- MAGIC if count >= 0:
 -- MAGIC
 -- MAGIC     message = f"""
--- MAGIC 🚨 CREDIT ANALYSIS — BRONZE ALERT TEST
+-- MAGIC  CREDIT ANALYSIS — BRONZE ALERT TEST
 -- MAGIC
 -- MAGIC Table: applicant_profiles
 -- MAGIC Records: {count}
 -- MAGIC
--- MAGIC ⚠️ Test condition triggered successfully.
+-- MAGIC  Test condition triggered successfully.
 -- MAGIC """
 -- MAGIC
 -- MAGIC     send_slack_alert(message)
