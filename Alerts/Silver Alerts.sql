@@ -18,7 +18,7 @@
 
 -- MAGIC %python
 -- MAGIC send_slack_alert(
--- MAGIC     "⚠️ CREDIT ANALYSIS — SILVER ALERT TEST\n\n"
+-- MAGIC     " CREDIT ANALYSIS — SILVER ALERT TEST\n\n"
 -- MAGIC     "Silver Alerts notebook is successfully connected to Slack."
 -- MAGIC )
 
@@ -64,12 +64,12 @@
 -- MAGIC if count >= 0:
 -- MAGIC
 -- MAGIC     message = f"""
--- MAGIC 🚨 CREDIT ANALYSIS — BRONZE ALERT TEST
+-- MAGIC CREDIT ANALYSIS — BRONZE ALERT TEST
 -- MAGIC
 -- MAGIC Table: applicant_profiles
 -- MAGIC Records: {count}
 -- MAGIC
--- MAGIC ⚠️ Test condition triggered successfully.
+-- MAGIC Test condition triggered successfully.
 -- MAGIC """
 -- MAGIC
 -- MAGIC     send_slack_alert(message)
@@ -133,7 +133,7 @@
 -- MAGIC         )
 -- MAGIC
 -- MAGIC     message = f"""
--- MAGIC ⚠️ CREDIT ANALYSIS — SILVER DATA QUALITY ALERT
+-- MAGIC  CREDIT ANALYSIS — SILVER DATA QUALITY ALERT
 -- MAGIC
 -- MAGIC NULL values detected in Silver layer:
 -- MAGIC
@@ -146,5 +146,5 @@
 -- MAGIC
 -- MAGIC else:
 -- MAGIC
--- MAGIC     print("✅ SILVER NULL CHECK PASSED")
+-- MAGIC     print("SILVER NULL CHECK PASSED")
 -- MAGIC     print("No NULL values detected in the Silver tables.")
