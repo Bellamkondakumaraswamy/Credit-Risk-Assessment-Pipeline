@@ -1,0 +1,92 @@
+[2026-09-10T14:42:30.931+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-09-10T14:42:30.955+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: credit_con.run_dbt_job manual__2026-09-10T14:42:29.289139+00:00 [queued]>
+[2026-09-10T14:42:30.964+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: credit_con.run_dbt_job manual__2026-09-10T14:42:29.289139+00:00 [queued]>
+[2026-09-10T14:42:30.965+0000] {taskinstance.py:2867} INFO - Starting attempt 1 of 1
+[2026-09-10T14:42:30.978+0000] {taskinstance.py:2890} INFO - Executing <Task(DbtCloudRunJobOperator): run_dbt_job> on 2026-09-10 14:42:29.289139+00:00
+[2026-09-10T14:42:30.989+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'credit_con', 'run_dbt_job', 'manual__2026-09-10T14:42:29.289139+00:00', '--job-id', '14', '--raw', '--subdir', 'DAGS_FOLDER/pipeline.py', '--cfg-path', '/tmp/tmpr2_23m2_']
+[2026-09-10T14:42:30.989+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=69) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2026-09-10T14:42:30.992+0000] {standard_task_runner.py:105} INFO - Job 14: Subtask run_dbt_job
+[2026-09-10T14:42:30.992+0000] {standard_task_runner.py:72} INFO - Started process 70 to run task
+[2026-09-10T14:42:31.065+0000] {task_command.py:467} INFO - Running <TaskInstance: credit_con.run_dbt_job manual__2026-09-10T14:42:29.289139+00:00 [running]> on host 2faf4a51991f
+[2026-09-10T14:42:31.168+0000] {taskinstance.py:3134} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='credit_con' AIRFLOW_CTX_TASK_ID='run_dbt_job' AIRFLOW_CTX_EXECUTION_DATE='2026-09-10T14:42:29.289139+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-09-10T14:42:29.289139+00:00'
+[2026-09-10T14:42:31.170+0000] {taskinstance.py:732} INFO - ::endgroup::
+[2026-09-10T14:42:31.203+0000] {connection.py:277} WARNING - Connection schemes (type: dbt_cloud) shall not contain '_' according to RFC3986.
+[2026-09-10T14:42:31.205+0000] {base.py:84} INFO - Retrieving connection 'credit_con'
+[2026-09-10T14:42:32.288+0000] {dbt.py:173} INFO - Waiting for job run 70506183738269 to terminate.
+[2026-09-10T14:42:32.290+0000] {dbt.py:557} INFO - Getting the status of job run 70506183738269.
+[2026-09-10T14:42:33.201+0000] {dbt.py:562} INFO - Current status of job run 70506183738269: STARTING
+[2026-09-10T14:43:33.199+0000] {dbt.py:557} INFO - Getting the status of job run 70506183738269.
+[2026-09-10T14:43:34.133+0000] {dbt.py:562} INFO - Current status of job run 70506183738269: CANCELLED
+[2026-09-10T14:43:34.148+0000] {taskinstance.py:3313} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 768, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 734, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 424, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/dbt/cloud/operators/dbt.py", line 184, in execute
+    raise DbtCloudJobRunException(f"Job run {self.run_id} has failed or has been cancelled.")
+airflow.providers.dbt.cloud.hooks.dbt.DbtCloudJobRunException: Job run 70506183738269 has failed or has been cancelled.
+[2026-09-10T14:43:34.153+0000] {taskinstance.py:1226} INFO - Marking task as FAILED. dag_id=credit_con, task_id=run_dbt_job, run_id=manual__2026-09-10T14:42:29.289139+00:00, execution_date=20260910T144229, start_date=20260910T144230, end_date=20260910T144334
+[2026-09-10T14:43:34.180+0000] {taskinstance.py:341} INFO - ::group::Post task execution logs
+[2026-09-10T14:43:34.181+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 14 for task run_dbt_job (Job run 70506183738269 has failed or has been cancelled.; 70)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3006, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 274, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3161, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3185, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 768, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 734, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 424, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/dbt/cloud/operators/dbt.py", line 184, in execute
+    raise DbtCloudJobRunException(f"Job run {self.run_id} has failed or has been cancelled.")
+airflow.providers.dbt.cloud.hooks.dbt.DbtCloudJobRunException: Job run 70506183738269 has failed or has been cancelled.
+[2026-09-10T14:43:34.216+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2026-09-10T14:43:34.232+0000] {taskinstance.py:3901} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-09-10T14:43:34.234+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
